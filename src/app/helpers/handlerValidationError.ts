@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import { TErrorSources, TGenericErrorResponse } from "../interfaces/errorTypes" 
+import { TErrorSources, TGenericErrorResponse } from "../interfaces/errorTypes"
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export const handlerValidationError = (err: mongoose.Error.ValidationError): TGenericErrorResponse => {

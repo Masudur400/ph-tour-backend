@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import  bcryptjs  from 'bcryptjs';
+import bcryptjs from 'bcryptjs';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import passport from "passport";
 import { Strategy as GoogleStrategy, Profile, VerifyCallback } from "passport-google-oauth20";
@@ -31,7 +31,7 @@ passport.use(
                 return done("User does not exist")
             }
 
-             if (!isUserExist.isVerified) {
+            if (!isUserExist.isVerified) {
                 // throw new AppError(httpStatus.BAD_REQUEST, "User is not verified")
                 return done("User is not verified")
             }
@@ -132,12 +132,12 @@ passport.use(
 
 
 
- 
+
 passport.serializeUser((user: any, done: (err: any, id?: unknown) => void) => {
     done(null, user._id)
 })
 
- 
+
 passport.deserializeUser(async (id: string, done: any) => {
     try {
         const user = await User.findById(id);

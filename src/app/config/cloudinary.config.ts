@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/no-explicit-any */ 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { v2 as cloudinary, UploadApiResponse } from "cloudinary";  
+import { v2 as cloudinary, UploadApiResponse } from "cloudinary";
 import AppError from "../errorHelpers/appError";
 import { envVars } from "./env";
 import stream from "stream";
 
- 
+
 
 cloudinary.config({
     cloud_name: envVars.CLOUDINARY.CLOUDINARY_CLOUD_NAME,
@@ -69,7 +69,6 @@ export const deleteImageFromCLoudinary = async (url: string) => {
     }
 }
 
-export const cloudinaryUpload = cloudinary 
+export const cloudinaryUpload = cloudinary
 
 
- 
