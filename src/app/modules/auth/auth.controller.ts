@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
  
 import { NextFunction, Request, Response } from "express"
 import httpStatus from "http-status-codes" 
@@ -105,13 +106,13 @@ const logout = catchAsync(async (req: Request, res: Response, next: NextFunction
     
     res.clearCookie('accessToken', {
         httpOnly:true,
-        secure:false,
-        sameSite:"lax",
+        secure:true,
+        sameSite:"none",
     })
     res.clearCookie('refreshToken', {
         httpOnly:true,
-        secure:false,
-        sameSite:"lax",
+        secure:true,
+        sameSite:"none",
     })
 
     sentResponse(res, {
