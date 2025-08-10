@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthRoutes = void 0;
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const express_1 = require("express");
 const auth_controller_1 = require("./auth.controller");
 const checkAuth_1 = require("../../middlewares/checkAuth");

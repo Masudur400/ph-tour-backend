@@ -21,9 +21,9 @@ const appError_1 = __importDefault(require("../errorHelpers/appError"));
 const jwt_1 = require("../utlis/jwt");
 const checkAuth = (...authRoles) => (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const accessToken = req.headers.authorization;
+        const accessToken = req.headers.authorization || req.cookies.accessToken;
         if (!accessToken) {
-            throw new appError_1.default(403, "No Token Recieved");
+            throw new appError_1.default(403, "No Token Received");
         }
         const verifiedToken = (0, jwt_1.verifyToken)(accessToken, env_1.envVars.JWT_ACCESS_SECRET);
         const isUserExist = yield user_model_1.User.findOne({ email: verifiedToken.email });

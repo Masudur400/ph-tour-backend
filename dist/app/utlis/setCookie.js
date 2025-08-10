@@ -8,7 +8,7 @@ exports.setAuthCookie = void 0;
 //             secure: envVars.NODE_ENV === "production",
 //             sameSite: "none"
 //         })
-//     }
+//     } 
 //     if (tokenInfo.refreshToken) {
 //         res.cookie("refreshToken", tokenInfo.refreshToken, {
 //             httpOnly: true,
@@ -21,14 +21,14 @@ const setAuthCookie = (res, tokenInfo) => {
     if (tokenInfo.accessToken) {
         res.cookie("accessToken", tokenInfo.accessToken, {
             httpOnly: true,
-            secure: false,
-            sameSite: "none"
+            secure: true,
+            sameSite: "none",
         });
     }
     if (tokenInfo.refreshToken) {
         res.cookie("refreshToken", tokenInfo.refreshToken, {
             httpOnly: true,
-            secure: false,
+            secure: true,
             sameSite: "none"
         });
     }
