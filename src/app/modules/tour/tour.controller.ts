@@ -2,7 +2,7 @@
 import { Request, Response } from 'express';
 import { catchAsync } from '../../utlis/catchAsync';
 import { TourService } from './tour.service';
-import { sentResponse } from '../../utlis/sentResponse';
+import { sentResponse, TMeta } from '../../utlis/sentResponse';
 import { ITour } from './tour.interface';
 
 
@@ -60,7 +60,8 @@ const deleteTour = catchAsync(async (req: Request, res: Response) => {
     });
 });
 const getAllTourTypes = catchAsync(async (req: Request, res: Response) => {
-    const result = await TourService.getAllTourTypes();
+    const query = req.query;
+    const result = await TourService.getAllTourTypes(query as Record<string, string>);
     sentResponse(res, {
         statusCode: 200,
         success: true,
@@ -77,7 +78,7 @@ const createTourType = catchAsync(async (req: Request, res: Response) => {
         statusCode: 201,
         success: true,
         message: 'Tour type created successfully',
-        data: result,
+        data: result, 
     });
 });
 

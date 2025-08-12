@@ -14,7 +14,8 @@ const mongoose_1 = require("mongoose");
 const tourTypeSchema = new mongoose_1.Schema({
     name: { type: String, required: true, unique: true }
 }, {
-    timestamps: true
+    timestamps: true,
+    versionKey: false
 });
 exports.TourType = (0, mongoose_1.model)("TourType", tourTypeSchema);
 const tourSchema = new mongoose_1.Schema({

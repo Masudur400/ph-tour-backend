@@ -76,14 +76,28 @@ const deleteTour = (id) => __awaiter(void 0, void 0, void 0, function* () {
     return yield tour_model_1.Tour.findByIdAndDelete(id);
 });
 const createTourType = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const existingTourType = yield tour_model_1.TourType.findOne({ name: payload.name });
+    const existingTourType = yield tour_model_1.TourType.findOne({ name: payload });
     if (existingTourType) {
         throw new Error("Tour type already exists.");
     }
-    return yield tour_model_1.TourType.create({ name });
+    return yield tour_model_1.TourType.create({ name: payload });
 });
-const getAllTourTypes = () => __awaiter(void 0, void 0, void 0, function* () {
-    return yield tour_model_1.TourType.find();
+const getAllTourTypes = (query) => __awaiter(void 0, void 0, void 0, function* () {
+    const queryBuilder = new queryBuilder_1.QueryBuilder(tour_model_1.TourType.find(), query);
+    const tourTypes = yield queryBuilder
+        .search(tour_constant_1.tourTypeSearchableFields)
+        .filter()
+        .sort()
+        .fields()
+        .paginate();
+    const [data, meta] = yield Promise.all([
+        tourTypes.build(),
+        queryBuilder.getMeta()
+    ]);
+    return {
+        data,
+        meta
+    };
 });
 const updateTourType = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
     const existingTourType = yield tour_model_1.TourType.findById(id);
