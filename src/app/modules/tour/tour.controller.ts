@@ -2,7 +2,7 @@
 import { Request, Response } from 'express';
 import { catchAsync } from '../../utlis/catchAsync';
 import { TourService } from './tour.service';
-import { sentResponse, TMeta } from '../../utlis/sentResponse';
+import { sentResponse} from '../../utlis/sentResponse';
 import { ITour } from './tour.interface';
 
 
