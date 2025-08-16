@@ -6,8 +6,9 @@ import { sentResponse } from "../../utlis/sentResponse";
 import { BookingService } from "./booking.service";
 
 const createBooking = catchAsync(async (req: Request, res: Response) => {
-    const decodeToken = req.user as JwtPayload
+    const decodeToken = req.user as JwtPayload;
     const booking = await BookingService.createBooking(req.body, decodeToken.userId);
+
     sentResponse(res, {
         statusCode: 201,
         success: true,

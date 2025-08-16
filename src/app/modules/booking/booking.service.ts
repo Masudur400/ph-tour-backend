@@ -11,6 +11,7 @@ import { PAYMENT_STATUS } from "../payment/payment.interface";
 import { ISSLCommerz } from "../sslCommerz/sslCommerz.interface";
 import { SSLService } from "../sslCommerz/sslCommerz.service";
 import { getTransactionId } from "../../utlis/getTransactionId";
+import { envVars } from "../../config/env";
 
 
 
@@ -77,12 +78,12 @@ const createBooking = async (payload: Partial<IBooking>, userId: string) => {
 
         const sslPayment = await SSLService.sslPaymentInit(sslPayload)
 
-        console.log(sslPayment);
+        console.log('create booking route',sslPayment , envVars.SSL.STORE_ID, envVars.SSL.STORE_PASS);
 
         await session.commitTransaction(); //transaction
         session.endSession()
         return {
-            paymentUrl: sslPayment.GatewayPageURL,
+            paymentUrl: sslPayment?.GatewayPageURL,
             booking: updatedBooking
         }
     } catch (error) {

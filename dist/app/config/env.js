@@ -30,8 +30,8 @@ const loadEnvVariables = () => {
         EXPRESS_SESSION_SECRET: process.env.EXPRESS_SESSION_SECRET,
         FRONTEND_URL: process.env.FRONTEND_URL,
         SSL: {
-            STORE_ID: process.env.SSL_STORE_ID,
-            STORE_PASS: process.env.SSL_STORE_PASS,
+            STORE_ID: process.env.STORE_ID,
+            STORE_PASS: process.env.STORE_PASS,
             SSL_PAYMENT_API: process.env.SSL_PAYMENT_API,
             SSL_VALIDATION_API: process.env.SSL_VALIDATION_API,
             SSL_SUCCESS_FRONTEND_URL: process.env.SSL_SUCCESS_FRONTEND_URL,

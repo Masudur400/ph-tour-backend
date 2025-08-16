@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
 import axios from 'axios';
 import httpStatus from "http-status-codes"
@@ -83,3 +84,8 @@ export const SSLService = {
     sslPaymentInit,
     validatePayment
 }
+
+
+
+
+ 

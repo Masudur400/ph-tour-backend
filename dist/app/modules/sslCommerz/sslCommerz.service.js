@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SSLService = void 0;
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
 const axios_1 = __importDefault(require("axios"));
 const http_status_codes_1 = __importDefault(require("http-status-codes"));

@@ -25,6 +25,7 @@ const payment_model_1 = require("../payment/payment.model");
 const payment_interface_1 = require("../payment/payment.interface");
 const sslCommerz_service_1 = require("../sslCommerz/sslCommerz.service");
 const getTransactionId_1 = require("../../utlis/getTransactionId");
+const env_1 = require("../../config/env");
 const createBooking = (payload, userId) => __awaiter(void 0, void 0, void 0, function* () {
     const transactionId = (0, getTransactionId_1.getTransactionId)();
     const session = yield booking_model_1.Booking.startSession();
@@ -65,11 +66,11 @@ const createBooking = (payload, userId) => __awaiter(void 0, void 0, void 0, fun
             transactionId: transactionId
         };
         const sslPayment = yield sslCommerz_service_1.SSLService.sslPaymentInit(sslPayload);
-        console.log(sslPayment);
+        console.log('create booking route', sslPayment, env_1.envVars.SSL.STORE_ID, env_1.envVars.SSL.STORE_PASS);
         yield session.commitTransaction(); //transaction
         session.endSession();
         return {
-            paymentUrl: sslPayment.GatewayPageURL,
+            paymentUrl: sslPayment === null || sslPayment === void 0 ? void 0 : sslPayment.GatewayPageURL,
             booking: updatedBooking
         };
     }
